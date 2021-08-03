@@ -5,8 +5,8 @@
         <div class="col-6">
             <h2 class="text-primary">Borrow Items</h2>
         </div>
-        <div class="col-6">
-            create new item
+        <div class="col-6 text-right">
+            <a asp-controller="Item" asp-action="Create" class="btn btn-primary">create new item</a>
         </div>
     </div>
     @{ if (Model.Count() > 0)
