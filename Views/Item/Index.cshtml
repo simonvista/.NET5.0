@@ -1,7 +1,40 @@
-﻿
-@{
-    ViewData["Title"] = "Index";
-}
+﻿@model IEnumerable<InAndOut.Models.Item>
 
-<h1>Index - Items</h1>
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Borrow Items</h2>
+        </div>
+        <div class="col-6">
+            create new item
+        </div>
+    </div>
+    @{ if (Model.Count() > 0)
+        {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>item name</th>
+                    <th>borrower</th>
+                    <th>lender</th>
+                </tr>                
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td width="30%"></td>
+                        <td width="30%">@item.Borrower.</td>
+                        <td width="30%">@item.Id</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        }
+        else
+        {
+        <p>No items created yet</p>
+        }
+     }
+</div>
 
