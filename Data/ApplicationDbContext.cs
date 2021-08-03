@@ -15,5 +15,6 @@ namespace InAndOut.Data
         }
         // Items will be the table name in MS-SQL server DB
         public DbSet<Item> Items { get; set; }
+        public DbSet<Expense> Expenses { get; set; }
     }
 }
