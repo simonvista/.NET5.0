@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using InAndOut.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,5 +13,7 @@ namespace InAndOut.Data
         {
 
         }
+        // Items will be the table name in MS-SQL server DB
+        public DbSet<Item> Items { get; set; }
     }
 }
