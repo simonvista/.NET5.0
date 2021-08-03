@@ -30,11 +30,15 @@ namespace InAndOut.Controllers
         // Post 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Expense Expense)
+        public IActionResult Create(Expense expense)
         {
-            _db.Expenses.Add(Expense);
-            _db.SaveChanges();
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                _db.Expenses.Add(expense);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(expense);
         }
 
     }
