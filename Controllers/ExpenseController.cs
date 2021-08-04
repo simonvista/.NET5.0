@@ -27,7 +27,7 @@ namespace InAndOut.Controllers
         {
             return View();
         }
-        // Post 
+        // Post Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Create(Expense expense)
@@ -67,6 +67,33 @@ namespace InAndOut.Controllers
             _db.Expenses.Remove(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");
+        }
+        // Get Update        
+        public IActionResult Update(int? id)
+        {
+            if (id == null || id == 0)
+            {
+                return NotFound();
+            }
+            Expense obj = _db.Expenses.Find(id);
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            return View(obj);
+        }
+        // Post Update
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Update(Expense expense)
+        {
+            if (ModelState.IsValid)
+            {
+                _db.Expenses.Update(expense);
+                _db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(expense);
         }
     }
 }
